@@ -13,10 +13,11 @@
  * - ALBERT_API_KEY: API key for authentication
  */
 
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-import * as fs from 'fs'
-import * as path from 'path'
+import axios from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import FormData from 'form-data'
+import * as fs from 'node:fs'
+import * as path from 'node:path'
 
 /**
  * Message interface for chat completions
