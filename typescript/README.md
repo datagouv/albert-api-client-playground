@@ -89,7 +89,7 @@ const results = await api.search(
 
 ## 🧪 Testing
 
-The project includes comprehensive test suites for each Albert API endpoint. Each test can be run individually or all together.
+The repo includes test code to play with each Albert API endpoint. Each test can be run individually or all together.
 
 ### Run initialization test (default):
 ```bash
