@@ -19,15 +19,6 @@ import * as path from 'path'
 import FormData from 'form-data'
 
 /**
- * Configuration for Albert API client.
- */
-export interface AlbertConfig {
-  base_url: string
-  api_key: string
-  timeout: number
-}
-
-/**
  * Message interface for chat completions
  */
 export interface ChatMessage {
@@ -53,7 +44,9 @@ export interface ChatMessage {
  * - Swagger UI: https://albert.api.etalab.gouv.fr/swagger
  */
 export class AlbertAPI {
-  private config: AlbertConfig
+  private base_url: string
+  private api_key: string
+  private timeout: number
   private client: AxiosInstance
 
   /**
@@ -68,28 +61,26 @@ export class AlbertAPI {
     api_key?: string,
     timeout: number = 30
   ) {
-    this.config = {
-      base_url: base_url || process.env.ALBERT_API_BASE_URL || '',
-      api_key: api_key || process.env.ALBERT_API_KEY || '',
-      timeout: timeout
-    }
+    this.base_url = base_url || process.env.ALBERT_API_BASE_URL || ''
+    this.api_key = api_key || process.env.ALBERT_API_KEY || ''
+    this.timeout = timeout
 
-    if (!this.config.base_url) {
+    if (!this.base_url) {
       throw new Error(
         "Base URL is required. Set ALBERT_API_BASE_URL environment variable or pass base_url parameter."
       )
     }
-    if (!this.config.api_key) {
+    if (!this.api_key) {
       throw new Error(
         "API key is required. Set ALBERT_API_KEY environment variable or pass api_key parameter."
       )
     }
 
     this.client = axios.create({
-      baseURL: this.config.base_url,
-      timeout: this.config.timeout * 1000, // Convert to milliseconds
+      baseURL: this.base_url,
+      timeout: this.timeout * 1000, // Convert to milliseconds
       headers: {
-        'Authorization': `Bearer ${this.config.api_key}`,
+        'Authorization': `Bearer ${this.api_key}`,
         'Content-Type': 'application/json',
       }
     })
@@ -109,7 +100,7 @@ export class AlbertAPI {
     endpoint: string,
     config: AxiosRequestConfig = {}
   ): Promise<any> {
-    const url = `${this.config.base_url.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`
+    const url = `${this.base_url.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`
 
     try {
       const response: AxiosResponse = await this.client.request({

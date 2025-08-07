@@ -17,17 +17,7 @@ Environment Variables:
 import os
 import json
 import requests
-from dataclasses import dataclass
 from pathlib import Path
-
-
-@dataclass
-class AlbertConfig:
-    """Configuration for Albert API client."""
-
-    base_url: str
-    api_key: str
-    timeout: int = 30
 
 
 class AlbertAPI:
@@ -60,16 +50,15 @@ class AlbertAPI:
             api_key: API key for authentication (defaults to ALBERT_API_KEY env var)
             timeout: Request timeout in seconds
         """
-        self.config = AlbertConfig(
-            base_url=base_url or os.getenv("ALBERT_API_BASE_URL"),
-            api_key=api_key or os.getenv("ALBERT_API_KEY"),
-            timeout=timeout,
-        )
-        if not self.config.base_url:
+        self.base_url = base_url or os.getenv("ALBERT_API_BASE_URL")
+        self.api_key = api_key or os.getenv("ALBERT_API_KEY")
+        self.timeout = timeout
+
+        if not self.base_url:
             raise ValueError(
                 "Base URL is required. Set ALBERT_API_BASE_URL environment variable or pass base_url parameter."
             )
-        if not self.config.api_key:
+        if not self.api_key:
             raise ValueError(
                 "API key is required. Set ALBERT_API_KEY environment variable or pass api_key parameter."
             )
@@ -77,7 +66,7 @@ class AlbertAPI:
         self.session = requests.Session()
         self.session.headers.update(
             {
-                "Authorization": f"Bearer {self.config.api_key}",
+                "Authorization": f"Bearer {self.api_key}",
                 "Content-Type": "application/json",
             }
         )
@@ -97,11 +86,11 @@ class AlbertAPI:
         Raises:
             RuntimeError: If the request fails
         """
-        url = f"{self.config.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
+        url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
         try:
             response = self.session.request(
-                method=method, url=url, timeout=self.config.timeout, **kwargs
+                method=method, url=url, timeout=self.timeout, **kwargs
             )
             response.raise_for_status()
 
