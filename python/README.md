@@ -27,7 +27,15 @@ Or copy `.env.example` to `.env` and fill in your values.
 
 **Run the test:**
 ```bash
-uv run test.py
+uv run test.py                    # Run initialization test (default)
+uv run test.py --models           # Test models endpoint
+uv run test.py --completions      # Test chat completions
+uv run test.py --embeddings       # Test embeddings
+uv run test.py --usage            # Test usage tracking
+uv run test.py --collections      # Test collections management
+uv run test.py --documents        # Test documents and chunks
+uv run test.py --search           # Test search functionality
+uv run test.py --all              # Run all tests
 ```
 
 **Or use in your own code:**
@@ -255,6 +263,7 @@ with AlbertAPI() as api:
 Lint and format the code with Ruff:
 
 ```bash
+# In your virtual environment or with uv run
 ruff check --fix . && ruff format .
 ```
 
