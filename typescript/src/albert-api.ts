@@ -45,43 +45,43 @@ export interface ChatMessage {
  * - Swagger UI: https://albert.api.etalab.gouv.fr/swagger
  */
 export class AlbertAPI {
-  private base_url: string
-  private api_key: string
+  private baseUrl: string
+  private apiKey: string
   private timeout: number
   private client: AxiosInstance
 
   /**
    * Initialize the Albert API client.
    * 
-   * @param base_url - Base URL for the API (defaults to ALBERT_API_BASE_URL env var)
-   * @param api_key - API key for authentication (defaults to ALBERT_API_KEY env var)
+   * @param baseUrl - Base URL for the API (defaults to ALBERT_API_BASE_URL env var)
+   * @param apiKey - API key for authentication (defaults to ALBERT_API_KEY env var)
    * @param timeout - Request timeout in seconds
    */
   constructor(
-    base_url?: string,
-    api_key?: string,
+    baseUrl?: string,
+    apiKey?: string,
     timeout: number = 30
   ) {
-    this.base_url = base_url || process.env.ALBERT_API_BASE_URL || ''
-    this.api_key = api_key || process.env.ALBERT_API_KEY || ''
+    this.baseUrl = baseUrl || process.env.ALBERT_API_BASE_URL || ''
+    this.apiKey = apiKey || process.env.ALBERT_API_KEY || ''
     this.timeout = timeout
 
-    if (!this.base_url) {
+    if (!this.baseUrl) {
       throw new Error(
-        "Base URL is required. Set ALBERT_API_BASE_URL environment variable or pass base_url parameter."
+        "Base URL is required. Set ALBERT_API_BASE_URL environment variable or pass baseUrl parameter."
       )
     }
-    if (!this.api_key) {
+    if (!this.apiKey) {
       throw new Error(
-        "API key is required. Set ALBERT_API_KEY environment variable or pass api_key parameter."
+        "API key is required. Set ALBERT_API_KEY environment variable or pass apiKey parameter."
       )
     }
 
     this.client = axios.create({
-      baseURL: this.base_url,
+      baseURL: this.baseUrl,
       timeout: this.timeout * 1000, // Convert to milliseconds
       headers: {
-        'Authorization': `Bearer ${this.api_key}`,
+        'Authorization': `Bearer ${this.apiKey}`,
         'Content-Type': 'application/json',
       }
     })
@@ -101,7 +101,7 @@ export class AlbertAPI {
     endpoint: string,
     config: AxiosRequestConfig = {}
   ): Promise<any> {
-    const url = `${this.base_url.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`
+    const url = `${this.baseUrl.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`
 
     try {
       const response: AxiosResponse = await this.client.request({
