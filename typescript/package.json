@@ -1,0 +1,33 @@
+{
+  "name": "albert-api-typescript",
+  "version": "0.1.0",
+  "description": "TypeScript client for the Albert API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "npm run build && node dist/test.js",
+    "test:models": "npm run build && node dist/test.js --models",
+    "test:completions": "npm run build && node dist/test.js --completions",
+    "test:embeddings": "npm run build && node dist/test.js --embeddings",
+    "test:usage": "npm run build && node dist/test.js --usage",
+    "test:collections": "npm run build && node dist/test.js --collections",
+    "test:documents": "npm run build && node dist/test.js --documents",
+    "test:search": "npm run build && node dist/test.js --search",
+    "test:all": "npm run build && node dist/test.js --all",
+    "start": "npm run build && node dist/test.js"
+  },
+  "keywords": ["albert", "api", "typescript", "client"],
+  "author": "data.gouv.fr",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "form-data": "^4.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.0"
+  }
+}

@@ -1,0 +1,13 @@
+[project]
+name = "albert-api-playground"
+version = "0.1.0"
+description = "A comprehensive Python client for interacting with the Albert API"
+authors = [
+    {name = "data.gouv.fr", email = "opendatateam@data.gouv.fr"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.15"
+dependencies = [
+    "dotenv>=0.9.9",
+    "requests>=2.31.0",
+]
