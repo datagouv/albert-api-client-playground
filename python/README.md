@@ -25,9 +25,9 @@ Or copy `.env.example` to `.env` and fill in your values.
 
 ## ⚡ Quick Start
 
-**Run the example:**
+**Run the test:**
 ```bash
-uv run main.py
+uv run test.py
 ```
 
 **Or use in your own code:**
@@ -260,7 +260,24 @@ ruff check --fix . && ruff format .
 
 ## 🔧 Environment Variables
 
+The client uses environment variables from the system environment. For testing, the demo script automatically loads environment variables from a `.env` file if present.
+
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `ALBERT_API_BASE_URL` | Base URL for the Albert API | Required |
 | `ALBERT_API_KEY` | Your API key for authentication | Required |
+
+### Setting environment variables:
+
+**For testing (recommended):**
+Create a `.env` file in the project root:
+```env
+ALBERT_API_BASE_URL=https://albert.api.etalab.gouv.fr
+ALBERT_API_KEY=your-api-key-here
+```
+
+**In your shell:**
+```bash
+export ALBERT_API_BASE_URL=https://albert.api.etalab.gouv.fr
+export ALBERT_API_KEY=your-api-key-here
+```

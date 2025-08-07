@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Albert API Client
+Albert API Python Client
 
 A comprehensive Python client for interacting with the Albert API.
 Based on the OpenAPI 3.1.0 specification.
@@ -12,8 +12,6 @@ Documentation:
 Environment Variables:
 - ALBERT_API_BASE_URL: Base URL for the Albert API
 - ALBERT_API_KEY: API key for authentication
-
-The script automatically loads environment variables from a .env file if present.
 """
 
 import os
@@ -21,10 +19,6 @@ import json
 import requests
 from dataclasses import dataclass
 from pathlib import Path
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
 
 
 @dataclass
@@ -160,9 +154,7 @@ class AlbertAPI:
     # CHAT COMPLETIONS
     # ============================================================================
 
-    def chat_completions(
-        self, messages: list[dict], model: str, **kwargs
-    ) -> dict:
+    def chat_completions(self, messages: list[dict], model: str, **kwargs) -> dict:
         """
         Create a chat completion.
 
@@ -177,9 +169,7 @@ class AlbertAPI:
         data = {"messages": messages, "model": model, **kwargs}
         return self._make_request("POST", "/v1/chat/completions", json=data)
 
-    def agents_completions(
-        self, messages: list[dict], model: str, **kwargs
-    ) -> dict:
+    def agents_completions(self, messages: list[dict], model: str, **kwargs) -> dict:
         """
         Create an agent completion with MCP bridge tools.
 
@@ -228,9 +218,7 @@ class AlbertAPI:
     # AUDIO TRANSCRIPTION
     # ============================================================================
 
-    def transcribe_audio(
-        self, file_path: str | Path, model: str, **kwargs
-    ) -> dict:
+    def transcribe_audio(self, file_path: str | Path, model: str, **kwargs) -> dict:
         """
         Transcribe audio file.
 
@@ -281,9 +269,7 @@ class AlbertAPI:
             files = {"file": (file_path.name, f, "application/pdf")}
             return self._make_request("POST", "/v1/parse-beta", data=data, files=files)
 
-    def ocr_document(
-        self, file_path: str | Path, model: str, **kwargs
-    ) -> dict:
+    def ocr_document(self, file_path: str | Path, model: str, **kwargs) -> dict:
         """
         Extract text from PDF using OCR.
 
@@ -442,9 +428,7 @@ class AlbertAPI:
     # CHUNKS
     # ============================================================================
 
-    def get_chunks(
-        self, document_id: int, limit: int = 10, offset: int = 0
-    ) -> dict:
+    def get_chunks(self, document_id: int, limit: int = 10, offset: int = 0) -> dict:
         """
         Get chunks of a document.
 
@@ -601,4 +585,4 @@ class AlbertAPI:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.close() 
+        self.close()

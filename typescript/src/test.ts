@@ -21,6 +21,10 @@
  */
 
 import { AlbertAPI } from './albert-api'
+import * as dotenv from 'dotenv'
+
+// Load environment variables from .env file for testing
+dotenv.config()
 
 async function test_initialization(): Promise<void> {
   console.log("🚀 Albert API TypeScript Playground - Initialization Test")

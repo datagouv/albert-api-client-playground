@@ -1,5 +1,5 @@
 /**
- * Albert API Client
+ * Albert API TypeScript Client
  * 
  * A comprehensive TypeScript client for interacting with the Albert API.
  * Based on the OpenAPI 3.1.0 specification.
@@ -11,18 +11,12 @@
  * Environment Variables:
  * - ALBERT_API_BASE_URL: Base URL for the Albert API
  * - ALBERT_API_KEY: API key for authentication
- * 
- * The script automatically loads environment variables from a .env file if present.
  */
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import * as fs from 'fs'
 import * as path from 'path'
-import * as dotenv from 'dotenv'
 import FormData from 'form-data'
-
-// Load environment variables from .env file
-dotenv.config()
 
 /**
  * Configuration for Albert API client.

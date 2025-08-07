@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """
-Albert API Playground - Testing and Demo
+Albert API Python Client - Testing and Demo
 
 This script demonstrates how to use the AlbertAPI client.
 Run this to test the API functionality.
 
 Usage:
-    python main.py
+    python test.py
 """
 
 import os
-from python.albert_api import AlbertAPI
+from dotenv import load_dotenv
+from albert_api import AlbertAPI
+
+# Load environment variables from .env file for testing
+load_dotenv()
 
 
 def main() -> None:

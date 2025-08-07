@@ -257,15 +257,29 @@ Delete a token.
 
 ## 🔧 Environment Variables
 
-The client automatically loads environment variables from a `.env` file if present.
+The client uses environment variables from the system environment. For testing, the test script automatically loads environment variables from a `.env` file if present.
 
 - `ALBERT_API_BASE_URL`: Base URL for the Albert API (default: `https://albert.api.etalab.gouv.fr`)
 - `ALBERT_API_KEY`: API key for authentication (required)
 
-### Example `.env` file:
+### Setting environment variables:
+
+**For testing (recommended):**
+Create a `.env` file in the project root:
 ```env
 ALBERT_API_BASE_URL=https://albert.api.etalab.gouv.fr
 ALBERT_API_KEY=your-api-key-here
+```
+
+**In your shell:**
+```bash
+export ALBERT_API_BASE_URL=https://albert.api.etalab.gouv.fr
+export ALBERT_API_KEY=your-api-key-here
+```
+
+**Or when running commands:**
+```bash
+ALBERT_API_KEY=your-key npm run test
 ```
 
 ## ⚠️ Error Handling

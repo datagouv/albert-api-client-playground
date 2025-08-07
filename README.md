@@ -1,6 +1,6 @@
 # Albert API Client Playground
 
-A comprehensive playground for interacting with the [Albert API](https://albert.api.etalab.gouv.fr), a French government AI API, featuring both Python and TypeScript implementations.
+A comprehensive playground for interacting with the [Albert API](https://albert.api.etalab.gouv.fr), a French government AI API, featuring both Python and TypeScript implementations, along with some test examples.
 
 ## 🐍 Python Client
 - **Location**: [`python/`](./python/)
