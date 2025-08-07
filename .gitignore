@@ -1,3 +1,9 @@
+# Environment variables
+.env
+
+# Python virtual environments
+.venv
+
 # Python-generated files
 __pycache__/
 *.py[oc]
@@ -9,16 +15,10 @@ wheels/
 # Python packaging
 .python-version
 
-# Ruff
+# Python - Ruff
 .ruff_cache/
 
 # TypeScript/Node.js
 node_modules/
 dist/
 *.tsbuildinfo
-
-# Environment variables
-.env
-
-# Virtual environments
-.venv
