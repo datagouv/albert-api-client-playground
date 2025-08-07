@@ -655,11 +655,4 @@ export class AlbertAPI {
     await this._make_request('DELETE', `/tokens/${token_id}`)
   }
 
-  /**
-   * Close the client.
-   */
-  close(): void {
-    // Axios doesn't need explicit cleanup, but we can clear the instance
-    this.client = axios.create()
-  }
 }
