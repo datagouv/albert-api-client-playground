@@ -15,8 +15,8 @@ Environment Variables:
 """
 
 import os
+import httpx
 import json
-import requests
 from pathlib import Path
 
 
@@ -63,7 +63,7 @@ class AlbertAPI:
                 "API key is required. Set ALBERT_API_KEY environment variable or pass api_key parameter."
             )
 
-        self.session = requests.Session()
+        self.session = httpx.Session()
         self.session.headers.update(
             {
                 "Authorization": f"Bearer {self.api_key}",
@@ -100,7 +100,7 @@ class AlbertAPI:
 
             return response.json()
 
-        except requests.exceptions.RequestException as e:
+        except httpx.exceptions.RequestException as e:
             raise RuntimeError(f"API request failed: {e}")
         except json.JSONDecodeError as e:
             raise RuntimeError(f"Failed to parse JSON response: {e}")
