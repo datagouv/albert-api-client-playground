@@ -20,6 +20,10 @@ npm run build
 npm run dev
 ```
 
+## 🔑 API Key Setup
+
+You'll need an Albert API key to use this client. See the [API key setup section of the main README](../README.md#-getting-started) for information on how to request one.
+
 ## ⚡ Quick Start
 
 ### Basic Usage

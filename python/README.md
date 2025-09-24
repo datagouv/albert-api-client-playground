@@ -2,9 +2,13 @@
 
 A comprehensive Python client for interacting with the Albert API, based on the OpenAPI 3.1.0 specification.
 
+## 🔑 API Key Setup
+
+You'll need an Albert API key to use this client. See the [API key setup section of the main README](../README.md#-getting-started) for information on how to request one.
+
 ## 📦 Installation
 
-1. Install dependencies:
+### 1. Install dependencies
 
 **Using uv (recommended):**
 ```bash
@@ -16,12 +20,20 @@ uv sync
 pip install -e .
 ```
 
-2. Set up environment variables:
+### 2. Set up environment variables
+
+**Using .env file (recommended):**
+
+Copy `.env.example` to `.env` in the project root and fill in your values:
+```env
+ALBERT_API_BASE_URL=https://albert.api.etalab.gouv.fr
+ALBERT_API_KEY=your-api-key-here
+```
+or **in your shell:**
 ```bash
 export ALBERT_API_BASE_URL="https://albert.api.etalab.gouv.fr"
 export ALBERT_API_KEY="your-api-key-here"
 ```
-Or copy `.env.example` to `.env` and fill in your values.
 
 ## ⚡ Quick Start
 
@@ -275,18 +287,3 @@ The client uses environment variables from the system environment. For testing, 
 |----------|-------------|---------|
 | `ALBERT_API_BASE_URL` | Base URL for the Albert API | Required |
 | `ALBERT_API_KEY` | Your API key for authentication | Required |
-
-### Setting environment variables:
-
-**For testing (recommended):**
-Create a `.env` file in the project root:
-```env
-ALBERT_API_BASE_URL=https://albert.api.etalab.gouv.fr
-ALBERT_API_KEY=your-api-key-here
-```
-
-**In your shell:**
-```bash
-export ALBERT_API_BASE_URL=https://albert.api.etalab.gouv.fr
-export ALBERT_API_KEY=your-api-key-here
-```
