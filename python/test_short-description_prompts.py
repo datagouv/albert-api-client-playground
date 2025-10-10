@@ -126,7 +126,7 @@ def main() -> None:
             print(f"Organization: {organization_name}")
 
             messages = interpolate_prompt(
-                "short_description_datagouv",
+                "short_description_datagouv_fallback",
                 description_short_max_length=200,
                 title=title,
                 description=description,
