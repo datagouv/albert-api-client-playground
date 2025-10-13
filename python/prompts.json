@@ -1,6 +1,6 @@
 [
   {
-    "name": "short_description_simple",
+    "name": "simple",
     "messages": [
       {
         "role": "system",
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "name": "short_description_datagouv",
+    "name": "antonin1",
     "messages": [
       {
         "role": "system",
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "name": "short_description_datagouv_fallback",
+    "name": "antonin1_fallback",
     "messages": [
       {
         "role": "system",

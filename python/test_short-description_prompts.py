@@ -124,9 +124,10 @@ def main() -> None:
             title, description, organization_name = get_dataset_info(dataset_id)
             print(f"Title: {title}")
             print(f"Organization: {organization_name}")
+            print(f"Description length: {len(description)}")
 
             messages = interpolate_prompt(
-                "short_description_datagouv_fallback",
+                "antonin1_fallback",
                 description_short_max_length=200,
                 title=title,
                 description=description,
