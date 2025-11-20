@@ -6,8 +6,8 @@ A comprehensive playground for interacting with the [Albert API](https://albert.
 
 To use the Albert API, you'll need an API key:
 
-- **Request a test API key**: Visit the [Albert API website](https://albert.sites.beta.gouv.fr/) to request a test key
-- **Production access**: Contact the team through the [Albert API website](https://albert.sites.beta.gouv.fr/) to discuss production key requirements
+- **Request an access API key**: Contact the team through the [Albert API website](https://albert.sites.beta.gouv.fr/) to discuss your project and request keys
+- **Manage your API keys**: Once approved, use the [Albert API key management UI](https://albert.playground.etalab.gouv.fr/)to create, view or rotate keys
 
 Once you have your API key, follow the setup instructions in the Python or TypeScript client documentation below.
 
