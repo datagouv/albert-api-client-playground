@@ -50,7 +50,6 @@ async function test_initialization(): Promise<void> {
     const models = await api.get_models()
     console.log(`✅ Successfully connected! Found ${models.data?.length || 0} models`)
 
-    api.close()
     console.log("\n✅ Initialization test completed successfully!")
 
   } catch (error: any) {
@@ -92,7 +91,6 @@ async function test_models(): Promise<void> {
       console.log(`✅ Successfully retrieved details for ${modelDetails.id}`)
     }
 
-    api.close()
     console.log("\n✅ Models test completed successfully!")
 
   } catch (error: any) {
@@ -166,7 +164,6 @@ async function test_completions(): Promise<void> {
       console.log("❌ No response received")
     }
 
-    api.close()
     console.log("\n✅ Chat completions test completed successfully!")
 
   } catch (error: any) {
@@ -224,7 +221,6 @@ async function test_embeddings(): Promise<void> {
       console.log("❌ No embeddings received")
     }
 
-    api.close()
     console.log("\n✅ Embeddings test completed successfully!")
 
   } catch (error: any) {
@@ -265,7 +261,6 @@ async function test_usage(): Promise<void> {
       console.log("ℹ️  No usage records found")
     }
 
-    api.close()
     console.log("\n✅ Usage test completed successfully!")
 
   } catch (error: any) {
@@ -330,7 +325,6 @@ async function test_collections(): Promise<void> {
       console.log("❌ Failed to create collection")
     }
 
-    api.close()
     console.log("\n✅ Collections test completed successfully!")
 
   } catch (error: any) {
@@ -383,7 +377,6 @@ async function test_documents(): Promise<void> {
       }
     }
 
-    api.close()
     console.log("\n✅ Documents test completed successfully!")
 
   } catch (error: any) {
@@ -430,7 +423,6 @@ async function test_search(): Promise<void> {
       console.log("ℹ️  No collections available for search")
     }
 
-    api.close()
     console.log("\n✅ Search test completed successfully!")
 
   } catch (error: any) {
