@@ -70,12 +70,16 @@ async function test_models(): Promise<void> {
     const models = await api.get_models()
     
     if (models.data && models.data.length > 0) {
+      const indent = '     '
       models.data.forEach((model: any, index: number) => {
-        console.log(`  ${index + 1}. ${model.id} (${model.type})`)
-        console.log(`     - Created: ${new Date(model.created * 1000).toISOString()}`)
-        console.log(`     - Owned by: ${model.owned_by}`)
+        const aliases: string[] = Array.isArray(model.aliases) ? model.aliases : []
+        const aliasSuffix = aliases.length > 0 ? ` (aliases: ${aliases.join(', ')})` : ''
+        console.log(`  ${index + 1}. ${model.id}${aliasSuffix}`)
+        console.log(`${indent}Type: ${model.type ?? 'N/A'}`)
+        console.log(`${indent}Created: ${model.created ?? 'N/A'}`)
+        console.log(`${indent}Owned by: ${model.owned_by ?? 'N/A'}`)
         if (model.max_context_length) {
-          console.log(`     - Max context length: ${model.max_context_length}`)
+          console.log(`${indent}Max context length: ${model.max_context_length}`)
         }
         console.log("")
       })

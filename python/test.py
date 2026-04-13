@@ -72,12 +72,17 @@ def test_models() -> None:
         models = api.get_models()
 
         if models.get("data"):
+            indent = "     "
             for i, model in enumerate(models["data"], 1):
-                print(f"  {i}. {model['id']} ({model['type']})")
-                print(f"     - Created: {model.get('created', 'N/A')}")
-                print(f"     - Owned by: {model.get('owned_by', 'N/A')}")
+                mid = model["id"]
+                aliases = model.get("aliases") or []
+                aka = f" (aliases: {', '.join(aliases)})" if aliases else ""
+                print(f"  {i}. {mid}{aka}")
+                print(f"{indent}Type: {model.get('type', 'N/A')}")
+                print(f"{indent}Created: {model.get('created', 'N/A')}")
+                print(f"{indent}Owned by: {model.get('owned_by', 'N/A')}")
                 if model.get("max_context_length"):
-                    print(f"     - Max context length: {model['max_context_length']}")
+                    print(f"{indent}Max context length: {model['max_context_length']}")
                 print()
 
         # Test getting a specific model

@@ -114,7 +114,9 @@ class AlbertAPI:
         Get list of available models.
 
         Returns:
-            Dictionary containing available models
+            Dictionary containing available models. Each item in ``data`` typically
+            includes ``id``, ``type``, and an ``aliases`` list of short product names
+            accepted by the API (e.g. ``openweight-small``) alongside the technical id.
         """
         return self._make_request("GET", "/v1/models")
 

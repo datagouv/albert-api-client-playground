@@ -133,7 +133,10 @@ export class AlbertAPI {
 
   /**
    * Get list of available models.
-   * 
+   *
+   * Each item in `data` typically includes `id`, `type`, and an `aliases` array of
+   * short product names accepted by the API (e.g. `openweight-small`) alongside the technical id.
+   *
    * @returns Dictionary containing available models
    */
   async get_models(): Promise<any> {
